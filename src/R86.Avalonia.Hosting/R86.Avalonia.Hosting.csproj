@@ -9,7 +9,7 @@
     <Authors>R86</Authors>
     <Description>Simple library that provides familiar dotnet application building blocks for the Avalonia UI framework</Description>
     <Copyright>Orel Kalaf</Copyright>
-    <PackageProjectUrl>https://github.com/orel-k/R86.Avalonia.Hosting</PackageProjectUrl>
+    <PackageProjectUrl>https://github.com/orel-k/R86.Avalonia</PackageProjectUrl>
     <PackageTags>c-sharp;xaml;cross-platform;dotnet;dotnetcore;avalonia;avaloniaui;di;</PackageTags>
     <PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
     <EnforceCodeStyleInBuild>True</EnforceCodeStyleInBuild>
@@ -18,7 +18,7 @@
   </PropertyGroup>
 
   <PropertyGroup Label="Package Info">
-    <RepositoryUrl>https://github.com/orel-k/R86.Avalonia.Hosting</RepositoryUrl>
+    <RepositoryUrl>https://github.com/orel-k/R86.Avalonia</RepositoryUrl>
     <Description>Simple library that provides familiar dotnet application building blocks</Description>
     <PackageTags>c-sharp;xaml;cross-platform;dotnet;dotnetcore;avalonia;avaloniaui;</PackageTags>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>

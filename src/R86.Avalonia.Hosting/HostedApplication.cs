@@ -1,8 +1,4 @@
-﻿using System;
-using System.Linq;
-using System.Threading;
-using System.Threading.Tasks;
-using Avalonia;
+﻿using Avalonia;
 using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.Threading;
 using Microsoft.Extensions.DependencyInjection;
@@ -17,7 +13,7 @@ public abstract partial class HostedApplication<T> : Application, IHostedService
     public IServiceProvider Services { get; internal set; } = default!;
 
     public static AvaloniaApplicationBuilder CreateBuilder(string[]? args = null,
-        Func<AppBuilder>? builderFactory = null)
+        Func<AppBuilder>? builderFactory = null, Func<HostApplicationBuilder>? hostBuilderFactory = null)
     {
         // For `top level statements`
         Thread.CurrentThread.TrySetApartmentState(ApartmentState.Unknown);
@@ -25,7 +21,7 @@ public abstract partial class HostedApplication<T> : Application, IHostedService
 
         args ??= [.. Environment.GetCommandLineArgs().Skip(1)];
 
-        var builder = new AvaloniaApplicationBuilder(args, builderFactory);
+        var builder = new AvaloniaApplicationBuilder(args, builderFactory, hostBuilderFactory);
 
         builder.Services.AddSingleton(x => (T)Application.Current!);
 

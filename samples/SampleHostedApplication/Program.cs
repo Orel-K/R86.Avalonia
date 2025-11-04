@@ -16,7 +16,7 @@ namespace SampleHostedApplication
         [STAThread]
         public static void Main(string[] args)
         {
-            var builder = App.CreateBuilder(args, BuildAvaloniaApp);
+            var builder = App.CreateBuilder(args, BuildAvaloniaApp, () => Host.CreateEmptyApplicationBuilder(null));
 
             builder.AddServiceDefaults();
 

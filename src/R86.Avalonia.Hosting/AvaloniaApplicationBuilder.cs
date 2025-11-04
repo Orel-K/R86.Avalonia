@@ -1,5 +1,4 @@
-﻿using System;
-using Avalonia;
+﻿using Avalonia;
 using Avalonia.Controls.ApplicationLifetimes;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -57,11 +56,11 @@ public abstract partial class HostedApplication<T> where T : HostedApplication<T
         readonly HostApplicationBuilder _hostBuilder;
         readonly string[] _args;
         internal AvaloniaApplicationBuilder(string[] args,
-           Func<AppBuilder>? builderFactory = null)
+           Func<AppBuilder>? builderFactory = null, Func<HostApplicationBuilder>? hostBuilderFactory = null)
         {
             _args = args;
 
-            _hostBuilder = Host.CreateApplicationBuilder();
+            _hostBuilder = (hostBuilderFactory ?? Host.CreateApplicationBuilder).Invoke();
 
             _appBuilder = (builderFactory ?? AppBuilder.Configure<T>).Invoke();
         }

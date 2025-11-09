@@ -35,17 +35,23 @@ public abstract partial class HostedApplication<T> where T : HostedApplication<T
 
             _hostBuilder.ConfigureContainer(new DefaultServiceProviderFactory(serviceProviderOptions));
 
-            // Will create the `Application` instance
-            _appBuilder.SetupWithClassicDesktopLifetime(_args, lifetimeBuilder);
-
             // For `StartAsync` && `StopAsync`
             _hostBuilder.Services.AddHostedService<T>(x => (T)Application.Current!);
 
-            IHost host = _hostBuilder.Build();
+            // Hook into app life time to set the Services value
+            _appBuilder.AfterSetup(_ =>
+            {
+                IHost host = _hostBuilder.Build();
 
-            HostedApplication<T> app = host.Services.GetRequiredService<T>();
+                HostedApplication<T> app = host.Services.GetRequiredService<T>();
 
-            app.Services = host.Services;
+                app.Services = host.Services;
+            });
+
+            // Will create the `Application` instance
+            _appBuilder.SetupWithClassicDesktopLifetime(_args, lifetimeBuilder);
+
+            HostedApplication<T> app = (HostedApplication<T>)HostedApplication.Current!;
 
             return (T)app;
         }

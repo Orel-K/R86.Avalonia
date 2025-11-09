@@ -5,12 +5,12 @@
     <LangVersion>latest</LangVersion>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
-    <PackageId>R86.Avalonia.Hosting</PackageId>
+    <PackageId>R86.Avalonia.Mvvm</PackageId>
     <Authors>R86</Authors>
-    <Description>Simple library that provides familiar dotnet application building blocks for the Avalonia UI framework</Description>
+    <Description>My vision of the `mvvm` design pattern</Description>
     <Copyright>Orel Kalaf</Copyright>
     <PackageProjectUrl>https://github.com/orel-k/R86.Avalonia</PackageProjectUrl>
-    <PackageTags>c-sharp;xaml;cross-platform;dotnet;dotnetcore;avalonia;avaloniaui;di;</PackageTags>
+    <PackageTags>c-sharp;xaml;cross-platform;dotnet;dotnetcore;avalonia;avaloniaui;di;mvvm;</PackageTags>
     <PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
     <EnforceCodeStyleInBuild>True</EnforceCodeStyleInBuild>
     <EnableNETAnalyzers>True</EnableNETAnalyzers>
@@ -19,17 +19,12 @@
 
   <PropertyGroup Label="Package Info">
     <RepositoryUrl>https://github.com/orel-k/R86.Avalonia</RepositoryUrl>
-    <Description>Simple library that provides familiar dotnet application building blocks</Description>
-    <PackageTags>c-sharp;xaml;cross-platform;dotnet;dotnetcore;avalonia;avaloniaui;</PackageTags>
+    <Description>My vision of the `mvvm` design pattern</Description>
+    <PackageTags>c-sharp;xaml;cross-platform;dotnet;dotnetcore;avalonia;avaloniaui;mvvm;</PackageTags>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <Version>0.4.0</Version>
     <AssemblyVersion>0.4.0.0</AssemblyVersion>
-    <PackageReadmeFile>getting-started.md</PackageReadmeFile>
   </PropertyGroup>
-  
-  <ItemGroup>
-    <None Include="..\..\getting-started.md" Pack="true" PackagePath="\"/>
-  </ItemGroup>
 
   <PropertyGroup Condition="'$(Configuration)'=='Release'">
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
@@ -38,9 +33,14 @@
   <ItemGroup>
     <PackageReference Include="Avalonia" />
     <PackageReference Include="Avalonia.Desktop" />
+    <PackageReference Include="CommunityToolkit.Mvvm" />
     
     <PackageReference Include="Microsoft.Extensions.Hosting" />
     <PackageReference Include="Microsoft.Extensions.Hosting.Abstractions" />
+  </ItemGroup>
+  
+  <ItemGroup>
+    <ProjectReference Include="..\R86.Avalonia.Hosting\R86.Avalonia.Hosting.csproj" />
   </ItemGroup>
 
 </Project>

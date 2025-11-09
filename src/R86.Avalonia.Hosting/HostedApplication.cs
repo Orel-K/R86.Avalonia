@@ -6,11 +6,15 @@ using Microsoft.Extensions.Hosting;
 
 namespace R86.Avalonia.Hosting;
 
-public abstract partial class HostedApplication<T> : Application, IHostedService
+public abstract class HostedApplication : Application
+{
+    public IServiceProvider Services { get; internal set; } = default!;
+
+}
+public abstract partial class HostedApplication<T> : HostedApplication, IHostedService
     where T : HostedApplication<T>, new()
 {
     public static new T Current => (T)Application.Current!;
-    public IServiceProvider Services { get; internal set; } = default!;
 
     public static AvaloniaApplicationBuilder CreateBuilder(string[]? args = null,
         Func<AppBuilder>? builderFactory = null, Func<HostApplicationBuilder>? hostBuilderFactory = null)
